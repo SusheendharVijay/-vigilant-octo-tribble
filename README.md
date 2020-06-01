@@ -1,2 +1,2 @@
-# -vigilant-octo-tribble
+# vigilant-octo-tribble
 ml project template 
