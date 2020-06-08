@@ -40,7 +40,7 @@ if __name__ == "__main__":
         label_encoders.append((c,lbl))
 
     
-    clf = ensemble.RandomForestClassifier(n_jobs=-1,verbose=2)
+    clf = ensemble.RandomForestClassifier(n_estimators=200,n_jobs=-1,verbose=2)
     clf.fit(train_df,ytrain)
     preds = clf.predict_proba(valid_df)[:,1]
 
