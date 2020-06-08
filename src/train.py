@@ -6,7 +6,7 @@ from sklearn import metrics
 
 TRAINING_DATA = os.environ.get("TRAINING_DATA")
 
-FOLD = os.environ.get("FOLD")
+FOLD = int(os.environ.get("FOLD"))
 
 FOLD_MAPPING = {
     0:[1,2,3,4],
@@ -20,11 +20,11 @@ FOLD_MAPPING = {
 
 if __name__ == "__main__":
     df = pd.read_csv(TRAINING_DATA)
-    train_df = df[df.kfold.isin(FOLD_MAPPING.get(FOLD)))]
+    train_df = df[df.kfold.isin(FOLD_MAPPING.get(FOLD))]
     valid_df = df[df.kfold==FOLD]
 
     ytrain = train_df.target.values
-    yvalid = train_df.target.values
+    yvalid = valid_df.target.values
 
     train_df = train_df.drop(["id","target","kfold"],axis=1)
     valid_df = valid_df.drop(["id","target","kfold"],axis=1)
